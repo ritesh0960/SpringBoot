@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form</title>
+</head>
+<body>
+    <form th:action="@{/processStudent}" th:object="${student}" method="POST">
+      FirstName :  <input type="text" th:field="${student.firstName}" placeholder="enter your First Name"/>
+      <br/> </br>
+      LastName  :  <input type="text" th:field="${student.secondName}" placeholder="enter your last name"/>
+      <br/></br>
+      Country :    <select th:field="${student.country}">
+<!--                      <option th:value="IN-India">India</option>-->
+<!--                      <option th:value="AU-Australlia">Australia</option>-->
+
+                          <option th:each="tempCountry : ${countries}" th:value="${tempCountry}" th:text="${tempCountry}"/>
+                   </select>
+        </br></br></br>
+      Operating System : <input type="radio" th:field="${student.operating}"
+                                             th:each="tempOperating : ${operating}"
+                                             th:value="${tempOperating}"
+                                             th:text="${tempOperating}"
+                             />
+
+        </br></br>
+      Select Your Favorite Languages : <input type="checkbox" th:field="${student.language}"
+                                                               th:each="tempLang : ${language}"
+                                                               th:value="${tempLang}"
+                                                               th:text="${tempLang}"
+                                          />
+        </br></br>
+      <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+</head>
+<body>
+   <h3>Welcome Customer!!</h3>
+  Customer Name is :  <span th:text="${customer.firstName} +' '+ ${customer.lastName}"> </span>
+ <p>Customer number is <span th:text="${customer.number}" /></p>
+ <p>Course Code : <span th:text="${customer.courseCode}"/></p>
+</body>
+</html>

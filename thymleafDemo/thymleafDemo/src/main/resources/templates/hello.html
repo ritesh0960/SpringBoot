@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>First project</title>
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+</head>
+<body>
+   <p th:text=" 'Hello how are you?' " class="funny"/>
+   </br>
+   <p>My name is Ritesh</p>
+   <p th:text="'Time on the server is ' + ${theDate}" class="funny"/>
+</body>
+</html>

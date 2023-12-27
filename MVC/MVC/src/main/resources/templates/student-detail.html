@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Detail</title>
+</head>
+<body>
+    <h3>Student Details</h3>
+    <p>Your Name is <span th:text="${firstName}+' '+${lastName}"/></p>
+    <p>Welcome to the country of <span th:text="${country}"/></p>
+    <p>Your favourite Operating system is <span th:text="${operating}"/></p>
+    Your Favourite Languages are :
+    <ul>
+        <li th:each="tempLang : ${language}" th:text="${tempLang}"/>
+    </ul>
+</body>
+</html>
