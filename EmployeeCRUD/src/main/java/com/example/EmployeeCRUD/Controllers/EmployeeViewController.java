@@ -34,6 +34,10 @@ public class EmployeeViewController {
         this.employeeService = employeeService;
     }
 
+    @GetMapping("/")
+    public String commonPage(){
+        return "common-page";
+    }
     @GetMapping("/showLoginPage")
     public String showloginForm(){
         return "login-form";
@@ -119,5 +123,9 @@ public class EmployeeViewController {
     public String deleteEmployee(@PathVariable int id) {
         this.employeeService.deleteEmployee(id);
         return "redirect:/homepage/employees";
+    }
+    @GetMapping("/accessDenied")
+    public String accessDeniedPage(){
+        return "access-denied";
     }
 }
