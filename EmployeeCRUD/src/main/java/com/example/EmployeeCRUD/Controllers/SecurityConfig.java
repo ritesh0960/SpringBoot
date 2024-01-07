@@ -90,6 +90,8 @@ public class SecurityConfig {
         httpSecurity.authorizeHttpRequests(configure->
                 configure
                         .requestMatchers("/homepage/").permitAll()
+                        .requestMatchers("/register/processRegistrationForm").permitAll()
+                        .requestMatchers("/register/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/homepage/employees")
                         .hasAnyRole("EMPLOYEE","MANAGER","ADMIN")
                         .requestMatchers(HttpMethod.GET,"/homepage/employees/**")
@@ -112,7 +114,7 @@ public class SecurityConfig {
                         .permitAll()
                  ).logout(logout->logout
                                        .permitAll()
-                                       .logoutSuccessUrl("/homepage/") )
+                                       .logoutSuccessUrl("/homepage/showLoginPage") )
                 .exceptionHandling(configurer->
                         configurer.accessDeniedPage("/homepage/accessDenied")
                         );

@@ -34,7 +34,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         session.setAttribute("user",theUser);
 
         //forward to homepage
-        response.sendRedirect("/homepage/");
+        response.sendRedirect("/homepage/employees");
 
     }
 }

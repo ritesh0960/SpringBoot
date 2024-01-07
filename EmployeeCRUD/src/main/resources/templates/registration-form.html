@@ -2,41 +2,101 @@
 <html lang="en" xmlns:th="http://www.thymleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Login Form</title>
-  <style>
-        .warning{
-        color:red;
-        }
-    </style>
+  <title>Registration Form</title>
   <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-  <form th:action="@{/processRegistrationForm}" method="POST">
-<!--    <div class="container warning" th:if="${param.error}">-->
-<!--      <i>Sorry you have entered an invalid username/password</i>-->
-<!--    </div>-->
-<!--    <div class="container warning" th:if="${param.logout}">-->
-<!--      <i>You have been logged out! Please login to continue</i>-->
-<!--    </div>-->
-    <div class="mb-3">
-      <label for="username" class="form-label">User Name</label>
-      <input type="text" class="form-control" id="username" aria-describedby="emailHelp" name="username">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" name="password">
-    </div>
-    <button type="submit" class="btn btn-primary" value="Login">Register</button>
 
-  </form>
-  <div>
-    <a th:href="@{/register/showRegistrationForm}"
-       class="btn btn-primary mt-3"
-       role="button"
-       aria-pressed="true">Register New User</a>
-  </div>
-</div>
+<section class="vh-100" style="background-color: #9A616D;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                                 alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                        </div>
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+
+                                <form th:action="@{/register/processRegistrationForm}" method="POST" th:object="${user}">
+
+                                    <div class="d-flex align-items-center mb-3 pb-1">
+                                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                        <span class="h1 fw-bold mb-0">Sign UP</span>
+                                    </div>
+
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create a New account</h5>
+
+                                    <div th:if="${error}">
+
+                                        <div class="alert alert-danger col-xs-offset-1 col-xs-10">
+                                            <span th:text="${error}"></span>
+                                        </div>
+
+                                    </div>
+
+<!--                                    <div th:if="${#fields.hasAnyErrors()}">-->
+<!--                                        <ul>-->
+<!--                                            <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />-->
+<!--                                        </ul>-->
+<!--                                    </div>-->
+
+                                    <div class="form-outline mb-4">
+                                        <input th:type="text" th:field="${user.userName}" class="form-control form-control-lg" />
+                                        <label class="form-label" th:for="${user.userName}">User Name</label>
+
+<!--                                        <ul>-->
+<!--                                            <li th:each="err : ${#fields.errors('userName')}" th:text="${err}" class="error" />-->
+<!--                                        </ul>-->
+
+<!--                                        <p th:if="${#fields.hasErrors('userName')}">Invalid User</p>-->
+                                    </div>
+
+                                    <div th:if="${#fields.hasErrors('userName')}"
+                                         style="margin-bottom: 25px" class="text-danger">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('userName')}" th:text="'User name ' + ${err}" />
+                                        </ul>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input th:type="password" th:field="${user.password}" class="form-control form-control-lg" />
+                                        <label class="form-label" th:for="${user.password}">Password</label>
+<!--                                        <ul>-->
+<!--                                            <li th:each="err : ${#fields.errors('password')}" th:text="${err}" class="error" />-->
+<!--                                        </ul>-->
+<!--                                        <p th:if="${#fields.hasErrors('password')}" th:errors="${password}"></p>-->
+
+                                    </div>
+
+                                    <div th:if="${#fields.hasErrors('password')}"
+                                         style="margin-bottom: 25px" class="text-danger">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('password')}" th:text="'Password ' + ${err}" />
+                                        </ul>
+                                    </div>
+
+                                    <div class="pt-1 mb-4">
+                                        <button class="btn btn-dark btn-lg btn-block" th:type="submit">Register</button>
+                                    </div>
+
+                                    <a class="small text-muted" href="#!">Forgot password?</a>
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">already have an account? <a th:href="@{/homepage/showLoginPage}"
+                                                                                                              style="color: #393f81;">Back to Login</a></p>
+                                    <a href="#!" class="small text-muted">Terms of use.</a>
+                                    <a href="#!" class="small text-muted">Privacy policy</a>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
+

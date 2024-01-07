@@ -1,6 +1,7 @@
 package com.example.EmployeeCRUD.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.springframework.boot.autoconfigure.web.WebProperties;
@@ -16,11 +17,13 @@ public class User {
     @Column(name="id")
     private long id;
 
+    @Valid
     @NotNull(message = "is required")
-    @Size(min = 1,message = "is required")
+    @Size(min = 4,message = "is required")
     @Column(name="username")
     private String userName;
 
+    @Valid
     @NotNull(message = "is required")
     @Size(min = 4,message = "at least 4 char are required")
     @Column(name = "password")
